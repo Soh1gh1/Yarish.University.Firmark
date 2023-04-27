@@ -5,7 +5,7 @@ ___
 **Contacts:**
 [Telegram](https://t.me/Nketr)
 ___
-#Stack:
+# Stack:
 * **[Azure](https://azure.microsoft.com/en-us/)** - cloud computing platform and a set of services provided by Microsoft for building, deploying, and managing applications and services through Microsoft-managed data centers.
 
 * **[MS SQL Server](https://www.microsoft.com/en-us/sql-server/)** - relational database management system (RDBMS) developed by Microsoft that uses SQL (Structured Query Language) to manage and manipulate data, including storing, querying, and retrieving data.
@@ -15,30 +15,30 @@ ___
 * **[.NET](https://dotnet.microsoft.com/en-us/)** - free, open-source, cross-platform framework for building modern apps and powerful cloud services.
 ___
 
-#Tasks decomposition
+# Tasks decomposition
 
-###Database:
+### Database:
 
-* Create database - **☑**
-* ORM Entity - **☑**
+* Create database - **☑︎**
+* ORM Entity - **🗹︎**
 
-###Azure:
+### Azure:
 
 * Registration - **☑**
 * Project deploy - **☑**
 * Azure database - **▢**
 * CI/CD - **▢**
 
-###Github:
+### Github:
 
 * README file - **☑**
 
-###Frontend:
+### Frontend:
 
 * User register/login - **☑**
 * User profile - **▢**
 
-###Authorization
+### Authorization
 
 * Pages register/login - **☑**
 * Service - **▢**
