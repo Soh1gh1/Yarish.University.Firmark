@@ -19,28 +19,28 @@ ___
 
 ### Database:
 
-* Create database - **☑︎**
+* Create database - **🗹︎**
 * ORM Entity - **🗹︎**
 
 ### Azure:
 
-* Registration - **☑**
-* Project deploy - **☑**
+* Registration - **🗹︎**
+* Project deploy - **🗹︎**
 * Azure database - **▢**
 * CI/CD - **▢**
 
 ### Github:
 
-* README file - **☑**
+* README file - **🗹︎**
 
 ### Frontend:
 
-* User register/login - **☑**
+* User register/login - **🗹︎**
 * User profile - **▢**
 
 ### Authorization
 
-* Pages register/login - **☑**
+* Pages register/login - **🗹︎**
 * Service - **▢**
 * Models - **▢**
 
