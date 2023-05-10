@@ -1,0 +1,135 @@
+﻿@page
+@model PrivacyModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Реєстрація</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .form-container {
+            margin: 0 auto;
+            max-width: 500px;
+        }
+
+        .form-container input[type="text"],
+        .form-container input[type="email"],
+        .form-container input[type="password"] {
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            box-shadow: 0px 0px 5px rgba(0,0,0,0.1);
+            width: 100%;
+        }
+
+        .form-container label {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="form-container">
+            <h1 class="text-center">Реєстрація</h1>
+            <form class="needs-validation" novalidate>
+                <div class="form-group">
+                    <label for="firstName">Ім'я</label>
+                    <input type="text" class="form-control" id="firstName" placeholder="Введіть своє ім'я" required>
+                    <div class="invalid-feedback">
+                        Введіть своє ім'я
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="lastName">Прізвище</label>
+                    <input type="text" class="form-control" id="lastName" placeholder="Введіть своє прізвище" required>
+                    <div class="invalid-feedback">
+                        Введіть своє прізвище
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" class="form-control" id="email" placeholder="example@example.com" required>
+                    <div class="invalid-feedback">
+                        Введіть коректний email
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="password">Пароль</label>
+                    <input type="password" class="form-control" id="password" placeholder="Введіть пароль (мінімум 6 символів)" minlength="6" required>
+                    <div class="invalid-feedback">
+                        Введіть пароль (мінімум 6 символів)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="confirmPassword">Підтвердіть пароль</label>
+                    <input type="text" class="form-control" id="confirmPassword" placeholder="Введіть пароль ще раз" required>
+                    <div class="invalid-feedback">
+                        Будь ласка, введіть пароль ще раз.
+                    </div>
+                </div>
+                <div class="form-group text-center">
+                    <button type="submit" class="btn btn-primary">Зареєструватися</button>
+                    <button type="button" class="btn btn-secondary" onclick="resetForm()">Відмінити</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+    <script>
+        // Disable form submission if there are invalid fields
+        (function () {
+            'use strict';
+            window.addEventListener('load', function () {
+                // Get the forms we want to add validation styles to
+                var forms = document.getElementsByClassName('needs-validation');
+                // Loop over them and prevent submission
+                var validation = Array.prototype.filter.call(forms, function (form) {
+                    form.addEventListener('submit', function (event) {
+                        if (form.checkValidity() === false) {
+                            event.preventDefault();
+                            event.stopPropagation();
+                        }
+                        form.classList.add('was-validated');
+                    }, false);
+                });
+            }, false);
+        })();
+
+        // Reset form fields on cancel button click
+        function resetForm() {
+            document.getElementById("firstName").value = "";
+            document.getElementById("lastName").value = "";
+            document.getElementById("email").value = "";
+            document.getElementById("password").value = "";
+            document.getElementById("confirmPassword").value = "";
+            document.getElementById("firstName").classList.remove('is-invalid');
+            document.getElementById("lastName").classList.remove('is-invalid');
+            document.getElementById("email").classList.remove('is-invalid');
+            document.getElementById("password").classList.remove('is-invalid');
+            document.getElementById("confirmPassword").classList.remove('is-invalid');
+            document.getElementById("firstName").classList.remove('is-valid');
+            document.getElementById("lastName").classList.remove('is-valid');
+            document.getElementById("email").classList.remove('is-valid');
+            document.getElementById("password").classList.remove('is-valid');
+            document.getElementById("confirmPassword").classList.remove('is-valid');
+        }
+    </script>
+</body>
+</html>
