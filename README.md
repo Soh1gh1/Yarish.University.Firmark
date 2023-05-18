@@ -2,9 +2,6 @@
 ___
 The Filmark project is a site with its own unique algorithms related to films. This site will implement a recommendation algorithm, an algorithm for selecting the Top 100 films based on user ratings. A personal account and the possibility to register will be implemented.
 ___
-**Contacts:**
-[Telegram](https://t.me/Nketr)
-___
 # Stack:
 * **[Azure](https://azure.microsoft.com/en-us/)** - cloud computing platform and a set of services provided by Microsoft for building, deploying, and managing applications and services through Microsoft-managed data centers.
 
@@ -48,3 +45,10 @@ ___
 
 * Logs - **▢**
 * Any tests - **▢**
+___
+# How to run a project on localhost:
+### To start:
+Install dependencies **npm ci** Start with **npm run dev**
+___
+**Contacts:**
+[Telegram](https://t.me/Nketr)
