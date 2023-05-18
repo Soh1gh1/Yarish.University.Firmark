@@ -1,134 +1,67 @@
 ﻿@page
 @model Yarish.University.Filmark.Web.Pages.LoginingModel
 @{
-	<!DOCTYPE html>
-	<html>
-	<head>
-		<title>Login</title>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<!-- Підключення бібліотеки Bootstrap -->
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-		<!-- Підключення стилів для форми логінування -->
-		<style>
-			.login-form {
-				max-width: 500px;
-				margin: 50px auto;
-				padding: 20px;
-				border: 1px solid #ddd;
-				border-radius: 5px;
-				background-color: #f5f5f5;
-			}
+    var movies = new Dictionary<string, string>
+    {
+        {"Фільм 1", "/Movies/Movie1"},
+        {"Фільм 2", "https://www.example.com/movie2"},
+        {"Фільм 3", "https://www.example.com/movie3"},
+        {"Фільм 4", "https://www.example.com/movie4"},
+        {"Фільм 5", "https://www.example.com/movie5"},
+        {"Фільм 6", "https://www.example.com/movie6"},
+        {"Фільм 7", "https://www.example.com/movie7"},
+        {"Фільм 8", "https://www.example.com/movie8"},
+        {"Фільм 9", "https://www.example.com/movie9"},
+        {"Фільм 10", "https://www.example.com/movie10"},
+        {"Фільм 11", "https://www.example.com/movie11"},
+        {"Фільм 12", "https://www.example.com/movie12"},
+        {"Фільм 13", "https://www.example.com/movie13"},
+        {"Фільм 14", "https://www.example.com/movie14"},
+        {"Фільм 15", "https://www.example.com/movie15"},
+        {"Фільм 16", "https://www.example.com/movie16"},
+        {"Фільм 17", "https://www.example.com/movie17"},
+        {"Фільм 18", "https://www.example.com/movie18"},
+        {"Фільм 19", "https://www.example.com/movie19"},
+        {"Фільм 20", "https://www.example.com/movie20"},
+        {"Фільм 21", "https://www.example.com/movie20"}
+    };
 
-				.login-form h2 {
-					text-align: center;
-					margin-bottom: 30px;
-				}
-
-				.login-form input[type="text"], .login-form input[type="password"] {
-					width: 100%;
-					padding: 12px 20px;
-					margin: 8px 0;
-					display: inline-block;
-					border: 1px solid #ccc;
-					border-radius: 4px;
-					box-sizing: border-box;
-				}
-
-				.login-form button {
-					background-color: #4CAF50;
-					color: white;
-					padding: 14px 20px;
-					margin: 8px 0;
-					border: none;
-					border-radius: 4px;
-					cursor: pointer;
-					width: 100%;
-					font-size: 16px;
-				}
-
-				.login-form button:hover {
-					background-color: #45a049;
-				}
-
-				.registration {
-					display: block;
-					margin: 0 auto;
-				}
-		</style>
-	</head>
-	<body>
-		<div class="container">
-			<div class="row">
-				<div class="col-md-6 offset-md-3">
-					<form class="login-form">
-						<h2>Sign in</h2>
-						<div class="form-group">
-							<label for="Email">Email:</label>
-							<input type="text" class="form-control" id="Email" placeholder="Enter email">
-						</div>
-						<div class="form-group">
-							<label for="password">Password:</label>
-							<input type="password" class="form-control" id="password" placeholder="Enter password">
-						</div>
-						<button type="submit" class="btn btn-primary">Submit</button>
-						<a href="/registration">Sign up</a>
-					</form>
-				</div>
-			</div>
-		</div>
-
-		<!-- Підключення скриптів для роботи з формою логінування -->
-		<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-		<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
-		<script>
-			$(document).ready(function () {
-				$('.login-form').submit(function (event) {
-					event.preventDefault();
-					var username = $('#username').val();
-					var password = $('#password').val();
-					// Виконати запит на сервер для перевірки логіну та паролю
-					// ...
-					// Якщо логін та пароль вірні, перенаправильні
-					//Використовуємо AJAX запит, щоб відправити дані на сервер
-					$.ajax({
-						type: "POST", //Метод відправки даних
-						url: "/login", //URL для запиту на сервер
-						data: { username: username, password: password }, //Дані, які ми відправляємо на сервер
-						success: function (response) { //Якщо запит виконався успішно
-							if (response.status === 'success') { //Якщо логін і пароль вірні
-								Swal.fire({ //Показати спливаюче повідомлення про успішний вхід
-									title: 'Успіх!',
-									text: 'Ви успішно увійшли в систему',
-									icon: 'success',
-									confirmButtonText: 'ОК'
-								}).then((result) => { //Перенаправити на головну сторінку
-									if (result.isConfirmed) {
-										window.location.href = "/home";
-									}
-								});
-							} else { //Якщо логін або пароль невірні
-								Swal.fire({ //Показати спливаюче повідомлення про помилку
-									title: 'Помилка!',
-									text: 'Невірний логін або пароль',
-									icon: 'error',
-									confirmButtonText: 'ОК'
-								});
-							}
-						},
-						error: function () { //Якщо запит виконався з помилкою
-							Swal.fire({ //Показати спливаюче повідомлення про помилку
-								title: 'Помилка!',
-								text: 'Сталася помилка при вході в систему',
-								icon: 'error',
-								confirmButtonText: 'ОК'
-							});
-						}
-					});
-				});
-			});
-		</script>
-
-	</body>
-	</html>
+    var placeholderImageUrl = "https://i.ibb.co/VtQ5gPw/Picsart-23-05-18-10-52-42-318.png";
 }
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Сторінка з віджетами фільмів</title>
+    <style>
+        .movie-widget {
+            display: inline-block;
+            width: 150px;
+            text-align: center;
+            margin: 10px;
+            cursor: pointer;
+        }
+
+            .movie-widget img {
+                width: 150px;
+                height: 225px;
+            }
+
+        .movie-title {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    @foreach (var movie in movies)
+    {
+        <a href="@movie.Value" target="_blank">
+            <div class="movie-widget">
+                <img src="@placeholderImageUrl" alt="Зображення фільму">
+                <div class="movie-title">@movie.Key</div>
+            </div>
+        </a>
+    }
+</body>
+</html>
