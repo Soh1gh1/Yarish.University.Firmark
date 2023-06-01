@@ -17,12 +17,12 @@ ___
 ### Database:
 
 * Create database - **🗹︎**
-* ORM Entity - **▢**
+* ORM Entity - **🗹︎**
 
 ### Azure:
 
 * Registration - **▢**
-* Project deploy - **▢**
+* Project deploy - **🗹︎**
 * Azure database - **▢**
 * CI/CD - **▢**
 
