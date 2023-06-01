@@ -75,7 +75,7 @@
 
         .comments {
             margin-top: 20px;
-            margin-bottom: 50px; /* Збільшена висота місця під коментаріями */
+            margin-bottom: 50px;
         }
 
         .comment {
@@ -107,6 +107,29 @@
                 border: none;
                 cursor: pointer;
             }
+
+        .seats-container {
+            display: flex;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .seat {
+            width: 25px;
+            height: 25px;
+            margin: 2px;
+            background-color: lightgray;
+            cursor: pointer;
+        }
+
+        .selected {
+            background-color: green;
+        }
+
+        .occupied {
+            background-color: red;
+            cursor: not-allowed;
+        }
     </style>
 </head>
 <body>
@@ -133,25 +156,40 @@
                     }
                 </div>
             </div>
-            <!-- Додайте додаткову інформацію про фільм тут -->
+            <div class="movie-info">
+                <strong>Місця:</strong>
+                <div class="seats-container">
+                    @for (int i = 1; i <= 100; i++)
+                    {
+                        <button class="seat"></button>
+                    }
+                </div>
+            </div>
         </div>
     </div>
-
-    <div class="comments">
-        <div class="comment">
-            <span class="comment-author">Автор коментаря 1:</span>
-            <div class="comment-text">Текст коментаря 1</div>
-        </div>
-        <div class="comment">
-            <span class="comment-author">Автор коментаря 2:</span>
-            <div class="comment-text">Текст коментаря 2</div>
-        </div>
-        <!-- Додайте інші коментарі тут -->
-    </div>
-
     <div class="comment-input">
         <textarea placeholder="Введіть ваш коментар"></textarea>
         <button>Відправити коментар</button>
     </div>
+
+    <script>
+        var seats = document.getElementsByClassName('seat');
+        for (var i = 0; i < seats.length; i++) {
+            seats[i].addEventListener('click', function () {
+                if (this.classList.contains('occupied')) {
+                    alert('Це місце вже заброньоване');
+                } else if (this.classList.contains('selected')) {
+                    this.classList.remove('selected');
+                    alert('Ви відмінили бронювання цього місця');
+                } else {
+                    this.classList.add('selected');
+                    alert('Ви забронювали це місце');
+                }
+            });
+        }
+    </script>
 </body>
 </html>
+
+
+
