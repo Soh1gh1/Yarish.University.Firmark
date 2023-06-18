@@ -1,9 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Yarish.University.Filmark.Models.Database.Essense;
+using Yarish.University.Filmark.Models.Database;
 
 public class FilmarkDbContext : DbContext
 {
-    public DbSet<Phone> Phones { get; set; }
+    public DbSet<User> users { get; set; }
 
     public FilmarkDbContext() { }
 
@@ -12,10 +12,16 @@ public class FilmarkDbContext : DbContext
     protected override void OnConfiguring(DbContextOptionsBuilder options)
     {
         options.UseLazyLoadingProxies();
+        options.UseSqlServer("");
     }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        modelBuilder.Entity<User>()
+            .Property(u => u.RegistrationDate)
+            .HasColumnType("date")
+            .HasDefaultValueSql("GETDATE()");
 
+        base.OnModelCreating(modelBuilder);
     }
 }
