@@ -1,13 +1,13 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Yarish.University.Filmark.Database;
 
-
-namespace YourNamespace
+namespace Yarish.University.Filmark.Web
 {
     public class Startup
     {
@@ -20,15 +20,13 @@ namespace YourNamespace
 
         public void ConfigureServices(IServiceCollection services)
         {
-            // Завантажити конфігурацію з файлу appsettings.json
-            IConfiguration configuration = new ConfigurationBuilder()
-                .SetBasePath(Directory.GetCurrentDirectory())
-                .AddJsonFile("appsettings.json")
-                .Build();
-
-            // Додати конфігурацію до служб
             services.AddDbContext<FilmarkDbContext>(options =>
-                options.UseSqlServer(configuration.GetConnectionString("FilmarkDatabase")));
+                options.UseSqlServer(Configuration.GetConnectionString("FilmarkDatabase")));
+
+            services.AddDistributedMemoryCache();
+            services.AddHttpContextAccessor();
+            services.AddSession();
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -39,17 +37,16 @@ namespace YourNamespace
             }
             else
             {
-                // Налаштування для продакшн середовища
                 app.UseExceptionHandler("/Home/Error");
                 app.UseHsts();
             }
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-
             app.UseRouting();
 
             app.UseAuthorization();
+            app.UseSession(); // Розмістіть цей метод після app.UseRouting(), але перед app.UseAuthorization()
 
             app.UseEndpoints(endpoints =>
             {

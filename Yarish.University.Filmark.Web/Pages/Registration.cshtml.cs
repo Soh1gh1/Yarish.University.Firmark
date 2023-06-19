@@ -8,9 +8,9 @@ using Microsoft.Extensions.Configuration.Json;
 using Microsoft.EntityFrameworkCore;
 using Yarish.University.Filmark.Database;
 using Yarish.University.Filmark.Models.Frontend;
-using static Yarish.University.Filmark.Database.Services.ApplicationUser;
 using System.Security.Cryptography;
 using System.Text;
+using static Yarish.University.Filmark.Database.Services.ApplicationUser;
 
 namespace Yarish.University.Filmark.Web.Pages
 {
@@ -46,7 +46,6 @@ namespace Yarish.University.Filmark.Web.Pages
                 OnGet();
                 return Page();
             }
-
 
             int year = User.SelectedYear;
             int month = DateTime.ParseExact(User.SelectedMonth, "MMMM", CultureInfo.CurrentCulture).Month;

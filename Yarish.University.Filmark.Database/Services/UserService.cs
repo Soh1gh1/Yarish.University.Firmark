@@ -5,8 +5,9 @@ using Yarish.University.Filmark.Database.Interfaces;
 using Yarish.University.Filmark.Models.Database;
 using Yarish.University.Filmark.Database.Services;
 using System.Text.RegularExpressions;
-using BCrypt.Net;
-
+using System.Security.Cryptography;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace Yarish.University.Filmark.Database.Services
 {
@@ -42,14 +43,22 @@ namespace Yarish.University.Filmark.Database.Services
 
                 string storedHashedPassword = user.Password;
 
-                return BCrypt.Net.BCrypt.Verify(password, storedHashedPassword);
+                // Порівняння хешів паролів
+                string enteredHashedPassword = HashPassword(password);
+                bool passwordMatches = storedHashedPassword == enteredHashedPassword;
+
+                return passwordMatches;
             }
 
-            public string HashPassword(string userPassword)
+            public string HashPassword(string password)
             {
-                string hashedPassword = BCrypt.Net.BCrypt.HashPassword(userPassword);
-
-                return hashedPassword;
+                using (SHA256 sha256 = SHA256.Create())
+                {
+                    byte[] passwordBytes = Encoding.UTF8.GetBytes(password);
+                    byte[] hashedBytes = sha256.ComputeHash(passwordBytes);
+                    string hashedPassword = Convert.ToBase64String(hashedBytes);
+                    return hashedPassword;
+                }
             }
 
             public async Task<User> GetByEmail(string email)
