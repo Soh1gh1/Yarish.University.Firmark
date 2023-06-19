@@ -18,6 +18,7 @@
     <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.2.2" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="7.0.7" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="7.0.7" />
+    <PackageReference Include="Microsoft.AspNetCore.MiddlewareAnalysis" Version="7.0.7" />
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.2" />
     <PackageReference Include="Microsoft.AspNetCore.Session" Version="2.2.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.7" />
@@ -31,6 +32,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Yarish.University.Filmark.Core\Yarish.University.Filmark.Core.csproj" />
+    <ProjectReference Include="..\Yarish.University.Filmark.Database\Yarish.University.Filmark.Database.csproj" />
   </ItemGroup>
 
   <ItemGroup>

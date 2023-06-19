@@ -1,5 +1,6 @@
 using Yarish.University.Filmark.Core;
 using Yarish.University.Filmark.Database;
+using Microsoft.AspNetCore.MiddlewareAnalysis;
 
 var builder = WebApplication.CreateBuilder(args);
 var configuration = builder.Configuration;
@@ -7,24 +8,29 @@ var configuration = builder.Configuration;
 builder.Services.RegisterCoreConfiguration(builder.Configuration);
 builder.Services.RegisterCoreDependencies();
 
-// Register database dependencies
 builder.Services.RegisterDatabaseDependencies(builder.Configuration);
 
-// Add services to the container.
 builder.Services.AddControllers();
 builder.Services.AddRazorPages();
 
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+// Зареєструвати служби сеансу
+builder.Services.AddDistributedMemoryCache(); // Додайте реалізацію розподіленого кешу, якщо потрібно
+builder.Services.AddSession(options =>
+{
+    options.IdleTimeout = TimeSpan.FromMinutes(30); // Встановіть тривалість тайм-ауту сеансу за потреби
+    options.Cookie.HttpOnly = true;
+    options.Cookie.IsEssential = true;
+});
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+// Налаштувати конвеєр обробки HTTP-запитів.
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
 
@@ -34,6 +40,7 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.UseAuthorization();
+app.UseSession();
 
 app.MapRazorPages();
 app.MapControllers();

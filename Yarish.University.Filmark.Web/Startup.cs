@@ -26,7 +26,6 @@ namespace Yarish.University.Filmark.Web
             services.AddDistributedMemoryCache();
             services.AddHttpContextAccessor();
             services.AddSession();
-            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -46,7 +45,7 @@ namespace Yarish.University.Filmark.Web
             app.UseRouting();
 
             app.UseAuthorization();
-            app.UseSession(); // Розмістіть цей метод після app.UseRouting(), але перед app.UseAuthorization()
+            app.UseSession();
 
             app.UseEndpoints(endpoints =>
             {

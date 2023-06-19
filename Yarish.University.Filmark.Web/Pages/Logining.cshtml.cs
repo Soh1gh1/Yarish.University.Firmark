@@ -32,11 +32,10 @@ namespace Yarish.University.Filmark.Web.Pages
                 return Page();
             }
 
-            // Check if email address and password match
             if (await _userService.EmailAndPasswordMatch(User?.EmailAddress, User?.Password))
             {
                 HttpContext.Session.SetString("userEmailAddress", User.EmailAddress);
-                return RedirectToPage("/Home");
+                return RedirectToPage("/index");
             }
             else
             {

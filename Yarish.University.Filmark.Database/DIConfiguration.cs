@@ -17,6 +17,9 @@ namespace Yarish.University.Filmark.Database
 
             services.AddScoped(typeof(IDbEntityService<>), typeof(DbEntityService<>));
             services.AddScoped<UserService, UserService>();
+            services.AddDistributedMemoryCache();
+            services.AddHttpContextAccessor();
+            services.AddSession();
         }
     }
 }

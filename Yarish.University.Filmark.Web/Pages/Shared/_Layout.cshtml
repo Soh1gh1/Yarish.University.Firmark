@@ -1,5 +1,7 @@
-﻿<!DOCTYPE html>
-<html lang="en">
+﻿@using Microsoft.AspNetCore.Http
+
+<!DOCTYPE html>
+<html lang="uk">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -10,33 +12,55 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-page="/Index">
-                    <img src="https://i.ibb.co/Ln9PXXY/Picsart-23-04-27-08-29-04-769.png" alt="Filmark Logo" width="150" height="50" class="d-inline-block align-top">
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" href="/swagger">Swagger UI</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Registration">Sign up</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Logining">Sign in</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Profile">Profile</a>
-                        </li>
-                    </ul>
+        @inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
+        @if (HttpContextAccessor.HttpContext.Session.GetString("userEmailAddress") == null)
+        {
+            <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+                <div class="container">
+                    <a class="navbar-brand" asp-area="" asp-page="/Index">
+                        <img src="https://i.ibb.co/Ln9PXXY/Picsart-23-04-27-08-29-04-769.png" alt="Filmark Logo" width="150" height="50" class="d-inline-block align-top">
+                    </a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                        <ul class="navbar-nav flex-grow-1">
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-page="/Registration">Реєстрація</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-page="/Logining">Увійти</a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
-            </div>
-        </nav>
+            </nav>
+        }
+        else
+        {
+            <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+                <div class="container">
+                    <a class="navbar-brand" asp-area="" asp-page="/Index">
+                        <img src="https://i.ibb.co/Ln9PXXY/Picsart-23-04-27-08-29-04-769.png" alt="Filmark Logo" width="150" height="50" class="d-inline-block align-top">
+                    </a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                        <ul class="navbar-nav flex-grow-1">
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" href="/swagger">Swagger UI</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-page="/Profile">Profile</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        }
     </header>
     <div class="container">
         <main role="main" class="pb-3">
@@ -44,11 +68,34 @@
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2023 - Yarish Nazar - <a asp-area="" asp-page="/Privacy">Privacy</a>
-        </div>
-    </footer>
+    @if (ViewContext.RouteData.Values["page"]?.ToString() == "/Index" && HttpContextAccessor.HttpContext.Session.GetString("userEmailAddress") == null)
+    {
+        <footer class="footer text-muted" style="width: 100%;">
+            <div class="container-fluid no-padding">
+                <div class="row">
+                    <div class="col-md-3 UnsignedFooter"></div>
+                    <div class="col-md-6 UnsignedFooter" style="padding-top: 0.5%;">
+                    </div>
+                    <div class="col-md-3 UnsignedFooter">
+                        <div class="container-fluid no-padding" style="text-align: center;">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <a href="/Logining">
+                                        <input type="submit" class="btn btn-block rounded-pill FooterSignInButton form-control" asp-page-handler="Submit" value="Увійти" />
+                                    </a>
+                                </div>
+                                <div class="col-md-6">
+                                    <a href="/Registration">
+                                        <input type="submit" class="btn btn-block rounded-pill FooterSignUpButton form-control" asp-page-handler="Submit" value="Зареєструватися" />
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    }
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
@@ -57,5 +104,3 @@
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
-
-
