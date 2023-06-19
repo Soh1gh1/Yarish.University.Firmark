@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AutoMapper;
+using System;
 using System.Text.Json.Serialization;
 using System.Text.Json;
 using System.Threading.Tasks;
@@ -7,9 +8,10 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using Yarish.University.Filmark.Database.Interfaces;
-using Yarish.University.Filmark.Models.Database;
 using Yarish.University.Filmark.Database.Services;
-using Yarish.University.Filmark.Core.Interfaces;
+using Yarish.University.Filmark.Models.Database;
+using Yarish.University.Filmark.Models.Frontend;
+using static Yarish.University.Filmark.Database.Services.ApplicationUser;
 
 namespace Yarish.University.Filmark.API.Controllers
 {

@@ -6,7 +6,6 @@ var configuration = builder.Configuration;
 
 builder.Services.RegisterCoreConfiguration(builder.Configuration);
 builder.Services.RegisterCoreDependencies();
-builder.Services.RegisterDatabseDependencies(builder.Configuration);
 
 // Register database dependencies
 builder.Services.RegisterDatabaseDependencies(builder.Configuration);

@@ -1,7 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
+using Microsoft.IdentityModel.Tokens;
 using Yarish.University.Filmark.Database.Interfaces;
 using Yarish.University.Filmark.Models.Database;
 using Yarish.University.Filmark.Database.Services;
+using System.Text.RegularExpressions;
 using BCrypt.Net;
 
 

@@ -4,9 +4,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Yarish.University.Filmark.Core.Interfaces;
 using Yarish.University.Filmark.Core.Mapper;
 using Yarish.University.Filmark.Models.Configuration;
-using Yarish.University.Filmark.Models.Configuration;
 
-namespace Suvorov.LNU.TwitterClone.Core
+namespace Yarish.University.Filmark.Core
 {
     public static class DIConfiguration
     {

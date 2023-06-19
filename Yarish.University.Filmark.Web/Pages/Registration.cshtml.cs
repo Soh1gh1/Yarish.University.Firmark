@@ -6,18 +6,22 @@ using Yarish.University.Filmark.Models.Database;
 using Yarish.University.Filmark.Database.Services;
 using Microsoft.Extensions.Configuration.Json;
 using Microsoft.EntityFrameworkCore;
+using Yarish.University.Filmark.Database;
 using Yarish.University.Filmark.Models.Frontend;
+using static Yarish.University.Filmark.Database.Services.ApplicationUser;
+using System.Security.Cryptography;
+using System.Text;
 
-namespace Suvorov.LNU.TwitterClone.Web.Pages
+namespace Yarish.University.Filmark.Web.Pages
 {
-    public class UserService : PageModel
+    public class RegistrationModel : PageModel
     {
         [BindProperty]
         public new CreateUserRequest User { get; set; }
 
-        private readonly Yarish.University.Filmark.Database.Services.UserService _userService;
+        private readonly UserService _userService;
 
-        public UserService(Yarish.University.Filmark.Database.Services.UserService.cs userService)
+        public RegistrationModel(UserService userService)
         {
             _userService = userService;
         }
@@ -43,27 +47,12 @@ namespace Suvorov.LNU.TwitterClone.Web.Pages
                 return Page();
             }
 
-            // Check if username already exists
-            if (await _userService.UserNameExists(User.UserName))
-            {
-                ModelState.AddModelError("User.UserName", "Username already exists.");
-                OnGet();
-                return Page();
-            }
-
-            // Check if email already exists
-            else if (await _userService.EmailExists(User.EmailAddress))
-            {
-                ModelState.AddModelError("User.EmailAddress", "Current email already in use.");
-                OnGet();
-                return Page();
-            }
 
             int year = User.SelectedYear;
             int month = DateTime.ParseExact(User.SelectedMonth, "MMMM", CultureInfo.CurrentCulture).Month;
             int day = User.SelectedDay;
 
-            string userHashedPassword = _userService.HashPassword(User.Password);
+            string userHashedPassword = HashPassword(User.Password);
 
             await _userService.Create(new User()
             {
@@ -74,7 +63,18 @@ namespace Suvorov.LNU.TwitterClone.Web.Pages
                 Birthday = new DateTime(year, month, day),
             });
 
-            return new RedirectToPageResult("/LoginUser");
+            return new RedirectToPageResult("/Logining");
+        }
+
+        private string HashPassword(string password)
+        {
+            using (SHA256 sha256 = SHA256.Create())
+            {
+                byte[] passwordBytes = Encoding.UTF8.GetBytes(password);
+                byte[] hashedBytes = sha256.ComputeHash(passwordBytes);
+                string hashedPassword = Convert.ToBase64String(hashedBytes);
+                return hashedPassword;
+            }
         }
     }
 }

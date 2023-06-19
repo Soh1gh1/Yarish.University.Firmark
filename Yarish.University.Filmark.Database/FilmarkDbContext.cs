@@ -1,18 +1,27 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Yarish.University.Filmark.Models.Database;
+using Microsoft.Extensions.Options;
+using Microsoft.Extensions.Configuration;
 
 public class FilmarkDbContext : DbContext
 {
-    public DbSet<User> users { get; set; }
+    public DbSet<User> User { get; set; }
 
-    public FilmarkDbContext() { }
+    private readonly IConfiguration _configuration;
 
-    public FilmarkDbContext(DbContextOptions<FilmarkDbContext> options) : base(options) { }
-
-    protected override void OnConfiguring(DbContextOptionsBuilder options)
+    public FilmarkDbContext(IConfiguration configuration)
     {
-        options.UseLazyLoadingProxies();
-        options.UseSqlServer("");
+        _configuration = configuration;
+    }
+
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    {
+        if (!optionsBuilder.IsConfigured)
+        {
+            string connectionString = _configuration.GetConnectionString("FilmarkDatabase");
+            optionsBuilder.UseSqlServer(connectionString);
+            optionsBuilder.UseLazyLoadingProxies();
+        }
     }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
