@@ -2,18 +2,14 @@
 {
     public static class ProjectConstants
     {
-        public static readonly string[] WeatherSummaries = new[]
+        public static readonly string[] OpenAIPromptTweetText = new[]
         {
-            "Freezing", 
-            "Bracing", 
-            "Chilly", 
-            "Cool", 
-            "Mild", 
-            "Warm", 
-            "Balmy", 
-            "Hot", 
-            "Sweltering", 
-            "Scorching"
+           ""
+        };
+
+        public static readonly string[] OpenAIPromptTweetHashtags = new[]
+        {
+            ""
         };
     }
 }
