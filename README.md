@@ -18,12 +18,13 @@ ___
 
 * Create database - **🗹︎**
 * ORM Entity - **🗹︎**
+* Dependency Injection - **🗹︎**
 
 ### Azure:
 
-* Registration - **▢**
+* Registration - **🗹︎**
 * Project deploy - **🗹︎**
-* Azure database - **▢**
+* Azure database - **🗹︎**
 * CI/CD - **▢**
 
 ### Github:
@@ -38,8 +39,8 @@ ___
 ### Authorization
 
 * Pages register/login - **🗹︎**
-* Service - **▢**
-* Models - **▢**
+* Service - **🗹︎**
+* Models - **🗹︎**
 
 ### Logs and Tests:
 
@@ -48,7 +49,8 @@ ___
 ___
 # How to run a project on localhost:
 ### To start:
-Install dependencies **npm ci** Start with **npm run dev**
+Open sln file using Visual Studio 2XXX
+Run project on localhost https://...
 ___
 **Contacts:**
 [Telegram](https://t.me/Nketr)
