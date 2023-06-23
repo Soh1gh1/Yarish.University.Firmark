@@ -56,6 +56,12 @@
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-page="/Profile">Profile</a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-page="/About">About</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -67,35 +73,6 @@
             @RenderBody()
         </main>
     </div>
-
-    @if (ViewContext.RouteData.Values["page"]?.ToString() == "/Index" && HttpContextAccessor.HttpContext.Session.GetString("userEmailAddress") == null)
-    {
-        <footer class="footer text-muted" style="width: 100%;">
-            <div class="container-fluid no-padding">
-                <div class="row">
-                    <div class="col-md-3 UnsignedFooter"></div>
-                    <div class="col-md-6 UnsignedFooter" style="padding-top: 0.5%;">
-                    </div>
-                    <div class="col-md-3 UnsignedFooter">
-                        <div class="container-fluid no-padding" style="text-align: center;">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <a href="/Logining">
-                                        <input type="submit" class="btn btn-block rounded-pill FooterSignInButton form-control" asp-page-handler="Submit" value="Увійти" />
-                                    </a>
-                                </div>
-                                <div class="col-md-6">
-                                    <a href="/Registration">
-                                        <input type="submit" class="btn btn-block rounded-pill FooterSignUpButton form-control" asp-page-handler="Submit" value="Зареєструватися" />
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </footer>
-    }
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>

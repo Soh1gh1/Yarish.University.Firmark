@@ -6,6 +6,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Yarish.University.Filmark.Database;
+using Yarish.University.Filmark.Database.Services;
 
 namespace Yarish.University.Filmark.Web
 {
@@ -26,6 +27,9 @@ namespace Yarish.University.Filmark.Web
             services.AddDistributedMemoryCache();
             services.AddHttpContextAccessor();
             services.AddSession();
+
+            // Додайте реєстрацію вашого UserService
+            services.AddScoped<ApplicationUser.UserService>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

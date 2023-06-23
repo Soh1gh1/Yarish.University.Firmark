@@ -35,7 +35,7 @@ namespace Yarish.University.Filmark.Web.Pages
             if (await _userService.EmailAndPasswordMatch(User?.EmailAddress, User?.Password))
             {
                 HttpContext.Session.SetString("userEmailAddress", User.EmailAddress);
-                return RedirectToPage("/index");
+                return RedirectToPage("/Index");
             }
             else
             {

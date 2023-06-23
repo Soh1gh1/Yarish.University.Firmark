@@ -4,26 +4,26 @@
     var movies = new Dictionary<string, string>
     {
         {"Фільм 1", "/Movies/Movie1"},
-        {"Фільм 2", "https://www.example.com/movie2"},
-        {"Фільм 3", "https://www.example.com/movie3"},
-        {"Фільм 4", "https://www.example.com/movie4"},
-        {"Фільм 5", "https://www.example.com/movie5"},
-        {"Фільм 6", "https://www.example.com/movie6"},
-        {"Фільм 7", "https://www.example.com/movie7"},
-        {"Фільм 8", "https://www.example.com/movie8"},
-        {"Фільм 9", "https://www.example.com/movie9"},
-        {"Фільм 10", "https://www.example.com/movie10"},
-        {"Фільм 11", "https://www.example.com/movie11"},
-        {"Фільм 12", "https://www.example.com/movie12"},
-        {"Фільм 13", "https://www.example.com/movie13"},
-        {"Фільм 14", "https://www.example.com/movie14"},
-        {"Фільм 15", "https://www.example.com/movie15"},
-        {"Фільм 16", "https://www.example.com/movie16"},
-        {"Фільм 17", "https://www.example.com/movie17"},
-        {"Фільм 18", "https://www.example.com/movie18"},
-        {"Фільм 19", "https://www.example.com/movie19"},
-        {"Фільм 20", "https://www.example.com/movie20"},
-        {"Фільм 21", "https://www.example.com/movie20"}
+        {"Фільм 2", "/Movies/Movie2"},
+        {"Фільм 3", "/Movies/movie3"},
+        {"Фільм 4", "/Movies/movie4"},
+        {"Фільм 5", "/Movies/movie5"},
+        {"Фільм 6", "/Movies/movie6"},
+        {"Фільм 7", "/Movies/movie7"},
+        {"Фільм 8", "/Movies/movie8"},
+        {"Фільм 9", "/Movies/movie9"},
+        {"Фільм 10", "/Movies/movie10"},
+        {"Фільм 11", "/Movies/movie11"},
+        {"Фільм 12", "/Movies/movie12"},
+        {"Фільм 13", "/Movies/movie13"},
+        {"Фільм 14", "/Movies/movie14"},
+        {"Фільм 15", "/Movies/movie15"},
+        {"Фільм 16", "/Movies/movie16"},
+        {"Фільм 17", "/Movies/movie17"},
+        {"Фільм 18", "/Movies/movie18"},
+        {"Фільм 19", "/Movies/movie19"},
+        {"Фільм 20", "/Movies/movie20"},
+        {"Фільм 21", "/Movies/movie20"}
     };
 
     var placeholderImageUrl = "https://i.ibb.co/VtQ5gPw/Picsart-23-05-18-10-52-42-318.png";
@@ -56,7 +56,7 @@
 <body>
     @foreach (var movie in movies)
     {
-        <a href="@movie.Value" target="_blank">
+        <a href="@movie.Value" target="_self">
             <div class="movie-widget">
                 <img src="@placeholderImageUrl" alt="Зображення фільму">
                 <div class="movie-title">@movie.Key</div>

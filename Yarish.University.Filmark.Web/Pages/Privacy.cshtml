@@ -1,0 +1,74 @@
+﻿@page
+@model PrivacyModel
+@{
+    ViewData["Title"] = "Private Privacy";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Private Privacy</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" />
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .jumbotron {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .TrendsLabelTitle {
+            font-size: 32px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .lead {
+            margin-bottom: 20px;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+            .contact-links a {
+                display: inline-block;
+                margin: 0 10px;
+                text-decoration: none;
+            }
+
+            .contact-links img {
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-6">
+                <div class="jumbotron">
+                    <h1 class="TrendsLabelTitle">Private Privacy</h1>
+                    <p class="lead">This is a default information about private privacy.</p>
+                    <div class="contact-links">
+                        <a href="mailto:your-email@example.com">
+                            <img src="https://i.ibb.co/yVzHG9k/email.png" alt="Email">
+                        </a>
+                        <a href="https://t.me/your-telegram">
+                            <img src="https://i.ibb.co/995zJPY/Telegram-png.webp" alt="Telegram">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,109 @@
+﻿@page
+@model AboutModel
+@{
+    ViewData["Title"] = "About";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>About</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" />
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .jumbotron {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .TrendsLabelTitle {
+            font-size: 32px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .alert {
+            margin-bottom: 15px;
+            padding: 15px;
+            border: 1px solid transparent;
+            border-radius: 4px;
+        }
+
+        .alert-danger {
+            background-color: #f8d7da;
+            border-color: #f5c6cb;
+            color: #721c24;
+        }
+
+        .lead {
+            margin-bottom: 20px;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+            .social-links a {
+                display: inline-block;
+                margin: 0 10px;
+                text-decoration: none;
+            }
+
+            .social-links img {
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            }
+
+        .author {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+            .author a {
+                text-decoration: none;
+                color: #007bff;
+            }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-6">
+                <div class="jumbotron">
+                    <h1 class="TrendsLabelTitle">About</h1>
+                    <p class="lead">
+                        <div class="alert alert-danger" role="alert">
+                            Disclaimer! <a href="#" class="alert-link">This project</a> was created for educational purposes
+                        </div>
+                    </p>
+                    <hr class="my-4">
+                    <p>Open-sourced Filmark project with .NET stack</p>
+                    <div class="social-links">
+                        <a href="https://github.com/Soh1gh1">
+                            <img src="https://i.ibb.co/3S9SvXV/github.png" alt="GitHub">
+                        </a>
+                        <a href="mailto:Soh1gh3105@gmail.com">
+                            <img src="https://i.ibb.co/yVzHG9k/email.png" alt="Email">
+                        </a>
+                        <a href="https://t.me/Nketr">
+                            <img src="https://i.ibb.co/995zJPY/Telegram-png.webp" alt="Telegram">
+                        </a>
+                    </div>
+                    <div class="author">
+                        by <a href="https://github.com/Soh1gh1">Yarish Nazar</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

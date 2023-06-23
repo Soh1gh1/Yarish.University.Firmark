@@ -1,0 +1,195 @@
+﻿@page
+@model Movie6Model
+@{
+    var movie = new
+    {
+        Title = "Назва фільму",
+        Description = "Опис фільму",
+        ImageUrl = "https://i.ibb.co/VtQ5gPw/Picsart-23-05-18-10-52-42-318.png"
+    };
+
+    var genres = new List<string>
+    {
+        "Жанр 1",
+        "Жанр 2",
+        "Жанр 3"
+    };
+
+    var actors = new List<string>
+    {
+        "Актор 1",
+        "Актор 2",
+        "Актор 3"
+    };
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Інформація про фільм</title>
+    <style>
+        .movie-container {
+            display: flex;
+            margin: 20px;
+        }
+
+        .movie-image {
+            width: 200px;
+            height: 300px;
+            margin-right: 20px;
+        }
+
+        .movie-details {
+            flex: 1;
+        }
+
+        .movie-title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .movie-description {
+            margin-bottom: 10px;
+        }
+
+        .movie-info {
+            margin-bottom: 10px;
+        }
+
+            .movie-info strong {
+                font-weight: bold;
+            }
+
+        .genres,
+        .actors {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .genre,
+        .actor {
+            margin-right: 10px;
+            margin-bottom: 5px;
+        }
+
+        .comments {
+            margin-top: 20px;
+            margin-bottom: 50px;
+        }
+
+        .comment {
+            margin-bottom: 10px;
+        }
+
+        .comment-author {
+            font-weight: bold;
+        }
+
+        .comment-text {
+            margin-top: 5px;
+        }
+
+        .comment-input {
+            margin-top: 20px;
+        }
+
+            .comment-input textarea {
+                width: 100%;
+                height: 80px;
+                margin-bottom: 10px;
+            }
+
+            .comment-input button {
+                padding: 8px 20px;
+                background-color: #007bff;
+                color: #fff;
+                border: none;
+                cursor: pointer;
+            }
+
+        .seats-container {
+            display: flex;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .seat {
+            width: 25px;
+            height: 25px;
+            margin: 2px;
+            background-color: lightgray;
+            cursor: pointer;
+        }
+
+        .selected {
+            background-color: green;
+        }
+
+        .occupied {
+            background-color: red;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body>
+    <div class="movie-container">
+        <img class="movie-image" src="@movie.ImageUrl" alt="Зображення фільму">
+        <div class="movie-details">
+            <div class="movie-title">@movie.Title</div>
+            <div class="movie-description">@movie.Description</div>
+            <div class="movie-info">
+                <strong>Жанри:</strong>
+                <div class="genres">
+                    @foreach (var genre in genres)
+                    {
+                        <span class="genre">@genre</span>
+                    }
+                </div>
+            </div>
+            <div class="movie-info">
+                <strong>Актори:</strong>
+                <div class="actors">
+                    @foreach (var actor in actors)
+                    {
+                        <span class="actor">@actor</span>
+                    }
+                </div>
+            </div>
+            <div class="movie-info">
+                <strong>Місця:</strong>
+                <div class="seats-container">
+                    @for (int i = 1; i <= 100; i++)
+                    {
+                        <button class="seat"></button>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="comment-input">
+        <textarea placeholder="Введіть ваш коментар"></textarea>
+        <button>Відправити коментар</button>
+    </div>
+
+    <script>
+        var seats = document.getElementsByClassName('seat');
+        for (var i = 0; i < seats.length; i++) {
+            seats[i].addEventListener('click', function () {
+                if (this.classList.contains('occupied')) {
+                    alert('Це місце вже заброньоване');
+                } else if (this.classList.contains('selected')) {
+                    this.classList.remove('selected');
+                    alert('Ви відмінили бронювання цього місця');
+                } else {
+                    this.classList.add('selected');
+                    alert('Ви забронювали це місце');
+                }
+            });
+        }
+    </script>
+</body>
+</html>
+
+
+

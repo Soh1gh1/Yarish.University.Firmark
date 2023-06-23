@@ -1,0 +1,91 @@
+﻿@page
+@model ProfileModel
+@{
+    ViewData["Title"] = "Профіль";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Профіль</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" />
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .jumbotron {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .TrendsLabelTitle {
+            font-size: 32px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .lead {
+            margin-bottom: 20px;
+        }
+
+        .profile-info {
+            margin-top: 30px;
+        }
+
+            .profile-info p {
+                margin-bottom: 10px;
+            }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+            .contact-links a {
+                display: inline-block;
+                margin: 0 10px;
+                text-decoration: none;
+            }
+
+            .contact-links img {
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            }
+
+        .avatar {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin: auto;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-6">
+                <div class="jumbotron">
+                    <h1 class="TrendsLabelTitle">Profile</h1>
+                    <div class="profile-info">
+                        <img src="https://www.w3schools.com/howto/img_avatar.png" alt="Avatar" class="avatar">
+                        <p><strong>Name:</strong> @Model.ProfileUser.Name</p>
+                        <p><strong>Email:</strong> @Model.ProfileUser.EmailAddress</p>
+                    </div>
+                    <div class="contact-links">
+                        <a href="mailto:@Model.ProfileUser.EmailAddress">
+                            <img src="https://i.ibb.co/yVzHG9k/email.png" alt="Email">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
